@@ -1,0 +1,17 @@
+version: "3"
+services:
+  node:
+    container_name: angular_project
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - "./:/var/www/html"
+    networks:
+      - angular_project-network
+    working_dir: /var/www/html
+    command: ng serve --host 0.0.0.0 --poll=2000
+
+networks:
+  angular_project-network:
+    driver: bridge
